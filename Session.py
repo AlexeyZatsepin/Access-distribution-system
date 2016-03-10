@@ -1,9 +1,12 @@
 # coding=utf-8
 from Connector import Connenct
-from User import User
 from utils import createDict
-from termcolor import colored
 from sqlite3 import OperationalError
+from utils import switch, case
+from termcolor import colored
+from User import User, view_user_list
+import csv
+import time
 
 
 class Context(object):
@@ -52,14 +55,6 @@ def identification(login, password):
             return False
 
 
-from Session import identification
-from utils import switch, case
-from termcolor import colored
-from User import User, view_user_list
-import csv
-import time
-
-
 def admin(context):
     global i
     while True:
@@ -85,13 +80,7 @@ def admin(context):
             if case(3):
                 try:
                     new_user_login = input("Enter new users login:")
-                except SyntaxError:
-                    print colored("Reminder : string have format 'string'", 'red')
-                    break
-                except UnboundLocalError:
-                    print colored("Reminder : string have format 'string'", 'red')
-                    break
-                except NameError:
+                except:
                     print colored("Reminder : string have format 'string'", 'red')
                     break
                 new_user = User(new_user_login, ' ')
@@ -101,13 +90,7 @@ def admin(context):
             if case(4):
                 try:
                     id = input("Enter user_id:")
-                except SyntaxError:
-                    print colored("Reminder : string have format 'string'", 'red')
-                    break
-                except UnboundLocalError:
-                    print colored("Reminder : string have format 'string'", 'red')
-                    break
-                except NameError:
+                except:
                     print colored("Reminder : string have format 'string'", 'red')
                     break
                 context.user.user_blocker(id, 'block')
@@ -115,13 +98,7 @@ def admin(context):
             if case(5):
                 try:
                     id = input("Enter user_id:")
-                except SyntaxError:
-                    print colored("Reminder : string have format 'string'", 'red')
-                    break
-                except UnboundLocalError:
-                    print colored("Reminder : string have format 'string'", 'red')
-                    break
-                except NameError:
+                except:
                     print colored("Reminder : string have format 'string'", 'red')
                     break
                 context.user.user_blocker(id, 'unblock')
@@ -174,27 +151,12 @@ def main():
                 try:
                     login = str(input("Enter login:"))
                     password = str(input("Enter password:"))
-                except SyntaxError:
+                except:
                     fails += 1
                     print colored("Reminder : string have format 'string'", 'red')
                     if fails == 3:
                         time.sleep(5)
                         raise SystemExit("Third identification is failed")
-                    break
-                except UnboundLocalError:
-                    fails += 1
-                    print colored("Reminder : string have format 'string'", 'red')
-                    if fails == 3:
-                        time.sleep(5)
-                        raise SystemExit("Third identification is failed")
-                    break
-                except NameError:
-                    fails += 1
-                    print colored("Reminder : string have format 'string'", 'red')
-                    if fails == 3:
-                        time.sleep(5)
-                        raise SystemExit("Third identification is failed")
-                    break
                 context = identification(login, password)
                 if not context:
                     fails += 1

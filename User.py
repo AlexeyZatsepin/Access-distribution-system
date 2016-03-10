@@ -62,11 +62,7 @@ class User(object):
                 old_password = input("Enter old password:")
                 new_password1 = input("Enter new valid password:")
                 new_password2 = input("Repeat new password:")
-            except SyntaxError:
-                print "Print valid values"
-            except UnboundLocalError:
-                print "Print valid values"
-            except NameError:
+            except:
                 print "Print valid values"
             if not password_is_valid(new_password1):
                 from termcolor import colored

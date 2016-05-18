@@ -1,0 +1,38 @@
+Analyzing Session.py
+Session.py:28: Medium: non-function call reference: open
+    users_list = [line.rstrip('\n') for line in open('base.txt')]
+Session.py:120: Medium: non-function call reference: open
+                with open('logs.csv', 'wb') as csvfile:
+Session.py:131: Medium: non-function call reference: open
+                with open('base.txt', 'w') as handle:
+Session.py:186: Medium: non-function call reference: open
+                with open('base.txt', 'w') as handle:
+Session.py:207: Medium: non-function call reference: open
+                with open('base.txt', 'w') as handle:
+A function call is not being made here, but a reference is being made to a name
+that is normally a vulnerable function.  It could be being assigned as a
+pointer to function.
+
+Session.py:80: Medium: non-function call reference: input
+            i = input('Enter number:')
+Session.py:95: Medium: non-function call reference: input
+                    new_user_login = input("Enter new users login:")
+Session.py:105: Medium: non-function call reference: input
+                    id = input("Enter user_id:")
+Session.py:113: Medium: non-function call reference: input
+                    id = input("Enter user_id:")
+Session.py:150: Medium: non-function call reference: input
+            i = input('Enter number:')
+Session.py:171: Medium: non-function call reference: input
+            i = input('Enter number:')
+Session.py:177: Medium: non-function call reference: input
+                    login = str(input("Enter login:"))
+Session.py:178: Medium: non-function call reference: input
+                    password = str(input("Enter password:"))
+A function call is not being made here, but a reference is being made to a name
+that is normally a vulnerable function.  It could be being assigned as a
+pointer to function.
+
+Total lines analyzed: 220
+Total time 0.006502 seconds
+33835 lines per second

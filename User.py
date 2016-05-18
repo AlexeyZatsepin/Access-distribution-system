@@ -15,13 +15,9 @@ def password_is_valid(password):
 
 def view_user_list():
     with Connenct() as cursor:
-        query = "SELECT id,login FROM User;"
+        query = "SELECT id,login,password,blocked,laws FROM User;"
         response = cursor.execute(query)
         tempDict = response.fetchall()
-        from termcolor import colored
-        print colored('id login', 'blue')
-        for id, login in tempDict:
-            print colored(str(id) + ' ' + login, 'green')
         return tempDict
 
 

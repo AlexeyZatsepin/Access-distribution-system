@@ -1,0 +1,12 @@
+Analyzing Connector.py
+Connector.py:4: Medium: non-function call reference: open
+        open= sqlite3.connect('test.db')
+Connector.py:5: Medium: non-function call reference: open
+        self.connection=open
+A function call is not being made here, but a reference is being made to a name
+that is normally a vulnerable function.  It could be being assigned as a
+pointer to function.
+
+Total lines analyzed: 11
+Total time 0.005910 seconds
+1861 lines per second
